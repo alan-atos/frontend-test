@@ -20,7 +20,33 @@ const Countries = () => {
     }, [])
 
     return <>
+        {countries.map((country, index) => {
 
+            const{ name, capital, region, languages, population, flags  } = country
+            const { common } = name
+            const { png } = flags
+
+            const newLeng = languages || {}
+            const languagesValues = Object.values(newLeng) || {};
+            console.log(languagesValues);
+            console.log(languagesValues.join(', '));
+            const languagesString = languagesValues.join(', ')
+
+            console.log("The current iteration is: " + index);
+            console.log("The current element is: " + common);
+            console.log("\n");
+
+
+            return <div key={index}>
+                <h4>{common}</h4>
+                <p>{capital}</p>
+                <p>{region}</p>
+                <p>{languagesString}</p>
+                <p>{population}</p>
+                <img src={png} alt={common} />
+            </div>
+
+        })}
     </>
 
     
